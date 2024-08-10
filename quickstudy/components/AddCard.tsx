@@ -1,0 +1,75 @@
+import { Alert, TextInput, StyleSheet, Text, Button, View, Pressable } from "react-native";
+import Spacer from "./Spacers";
+import { useState } from "react";
+export default function AddCard(props){
+
+    const [front, setFront] = useState("");
+    const [back, setBack] = useState("");
+
+    return (
+        <View
+            style = {{
+                padding: 10,
+                width: 360,
+                borderColor: "#39B200",
+                borderWidth: 2,
+                marginTop: 20,
+                borderRadius: 8
+            }}
+        >
+            <Text 
+                style = {{
+                    backgroundColor: "#5B74F6",
+                    padding: 10,
+                    margin: -10,
+                    fontSize: 20,
+                    textAlign: "center",
+                    borderTopEndRadius: 8,
+                    borderTopStartRadius: 8
+                }}
+            >
+                Add Card
+            </Text>
+            <Spacer height = {20}/>
+            <TextInput
+                style = {styles.textInput}
+                placeholder= {"Front"}
+                onChangeText={setFront}
+            />
+            <TextInput
+                style = {styles.textInput}
+                placeholder= {"Back"}
+                onChangeText={setBack}
+            />
+            <Pressable onFocus = {(() => {props.add(front, back)})} style = {styles.button}>
+                <Text style = {styles.text}>ADD</Text>
+            </Pressable>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    button: {
+        borderColor: "#D36147",
+        borderWidth: 2,
+        backgroundColor: "#D36147",
+        borderRadius: 8,
+        padding: 10
+    },
+    textInput: {
+        fontSize: 20,
+        color: "#ffffff",
+        padding: 15,
+        paddingTop: 15,
+        paddingBottom: 15,
+        marginBottom: 10,
+        borderColor: "#39B200",
+        borderWidth: 2,
+        borderRadius: 8
+    },
+    text: {
+        color: "#ffffff",
+        textAlign: "center",
+        fontSize: 20
+    }
+})
